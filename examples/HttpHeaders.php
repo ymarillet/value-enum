@@ -1,24 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
+use Ymarillet\ValueEnum\Interfaces\SetInterface;
 use Ymarillet\ValueEnum\Set;
 use Ymarillet\ValueEnum\Term;
 use Ymarillet\ValueEnum\Traits\SetHolder;
 
-class HttpHeaders
+final class HttpHeaders implements SetInterface
 {
     use SetHolder;
 
-    const AUTHORIZATION = 'Authorization';
     const ACCEPT = 'Accept';
-    const CONTENT_TYPE = 'Content-Type';
-    const CONTENT_DISPOSITION = 'Content-Disposition';
+    const AUTHORIZATION = 'Authorization';
     const CACHE_TAGS = 'Cache-Tags';
+    const CONTENT_DISPOSITION = 'Content-Disposition';
+    const CONTENT_TYPE = 'Content-Type';
 
     public function __construct()
     {
         $this->data = new Set([
-            new Term(self::AUTHORIZATION, self::AUTHORIZATION),
             new Term(self::ACCEPT, self::ACCEPT),
+            new Term(self::AUTHORIZATION, self::AUTHORIZATION),
+            new Term(self::CACHE_TAGS, self::CACHE_TAGS),
+            new Term(self::CONTENT_DISPOSITION, self::CONTENT_DISPOSITION),
             new Term(self::CONTENT_TYPE, self::CONTENT_TYPE),
         ]);
     }
